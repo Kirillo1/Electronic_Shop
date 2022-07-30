@@ -4,7 +4,7 @@ from django.views.generic import DetailView, CreateView, UpdateView, DeleteView
 
 from e_shop.forms import ProductForm
 from e_shop.models import Product
-from source.e_shop.views.base import SearchView
+from e_shop.views.base import SearchView
 
 
 class IndexView(SearchView):

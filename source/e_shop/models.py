@@ -29,3 +29,24 @@ class Product(models.Model):
     class Meta:
         verbose_name = 'Продукт'
         verbose_name_plural = 'Продукты'
+
+
+class ItemInCart(models.Model):
+    product = models.ForeignKey("e_shop.Product", on_delete=models.CASCADE,
+                                related_name="in_cart", verbose_name="Продукт")
+    quantity = models.PositiveIntegerField(verbose_name="колличество", default=1)
+
+    def get_product_total(self):
+        return self.quantity * self.product.price
+
+    class Meta:
+        verbose_name = 'корзина'
+        verbose_name_plural = 'корзины'
+
+    @classmethod
+    def get_total(cls):
+        total = 0
+        for cart in cls.objects.all():
+            total += cart.get_product_total()
+        return total
+

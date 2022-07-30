@@ -1,6 +1,6 @@
 from django import forms
 
-from e_shop.models import Product
+from e_shop.models import Product, ItemInCart
 
 
 class SearchForm(forms.Form):
@@ -11,3 +11,9 @@ class ProductForm(forms.ModelForm):
     class Meta:
         model = Product
         exclude = []
+
+
+class CartForm(forms.ModelForm):
+    class Meta:
+        model = ItemInCart
+        fields = ["quantity"]
