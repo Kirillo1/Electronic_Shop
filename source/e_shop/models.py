@@ -44,7 +44,7 @@ class ItemInCart(models.Model):
         verbose_name_plural = 'корзины'
 
     @classmethod
-    def get_total(cls):
+    def get_total(cls): 
         total = 0
         for cart in cls.objects.all():
             total += cart.get_product_total()
