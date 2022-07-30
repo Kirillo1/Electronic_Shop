@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block lists %}Детальная информация {{ product.name }}{% endblock %}
+{% block nav %}
+{#    {% if perms.add_product %}#}
+{#        <li class="nav-item">#}
+{#            <a class="nav-link active" aria-current="page" href="{% url 'product:product_add' %}">Добавить товар</a>#}
+{#        </li>#}
+{#        <li class="nav-item">#}
+{#            <a class="nav-link active" aria-current="page"#}
+{#               href="{% url 'product:product_delete' product.pk %}">Удалить</a>#}
+{#        </li>#}
+{#        <li class="nav-item">#}
+{#            <a class="nav-link active" aria-current="page" href="{% url 'product:product_update' product.pk %}">Редактировать</a>#}
+{#        </li>#}
+{#    {% endif %}#}
+{% endblock %}
+{% block content %}
+    <br><br>
+    <ul class="list-group">
+        <li class="list-group-item active" aria-current="true">{{ product.name }}</li>
+        <li class="list-group-item">Категория: {{ product.category }}</li>
+        <li class="list-group-item">Описание: {{ product.description }}</li>
+        <li class="list-group-item">Остаток: {{ product.remainder }}</li>
+        <li class="list-group-item">Цена: {{ product.price }}</li>
+    </ul><br>
+{#    {% include 'partial/cart_add_form.html' %}#}
+{% endblock %}

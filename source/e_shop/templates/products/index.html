@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+{% block content %}<br/>
+    {% if products %}<br/>
+        <h1>Наши товары</h1><br/>
+    {% else %}
+        <br/><h1>Нет товаров</h1><br/>
+    {% endif %}
+
+    {% for product in products %}
+        <div class="card text-center">
+            <div class="card-header">
+            </div>
+            <div class="card-body">
+                <h5 class="card-title">Название: {{ product.name }}</h5>
+                <p class="card-text">Категория: {{ product.category }}</p>
+                <p class="card-text">Цена: {{ product.price }}</p>
+            </div>
+            <div>
+                <button type="submit" class="btn btn-primary"><a class="dropdown-item"
+                                                                   href="{% url "products:product_view" product.pk %}">Подробная
+                    информация</a></button>
+            </div>
+            <br>
+
+{#            {% if perms.shop.add_product %}#}
+{##}
+{#                <div class="btn-group" role="group" aria-label="Basic mixed styles example">#}
+{#                    <button type="button" class="btn btn-warning"><a class="dropdown-item"#}
+{#                                                                     href="{% url "product:product_update" product.pk %}">Изменить</a>#}
+{#                    </button>#}
+{#                    <button type="button" class="btn btn-danger"><a class="dropdown-item"#}
+{#                                                                    href="{% url "product:product_delete" product.pk %}">Удалить</a>#}
+{#                    </button>#}
+{#                </div><br>#}
+{#            {% endif %}#}
+{#            {% include 'partial/cart_add_form.html' %}<br>#}
+
+
+        </div><br>
+
+
+    {% endfor %}
+
+
+    {% if is_paginated %}
+        {% include 'partial/pagination.html' %}
+    {% endif %}
+{% endblock %}
