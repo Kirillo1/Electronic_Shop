@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% block lists %}Добавление товара{% endblock %}
+{% block nav %}{% endblock %}
+{% block content %}
+    <h1>Добавить товар</h1>
+
+    <form method="post">
+        {% include "partial/form.html" with button_text="Сохранить" %}
+    </form>
+{% endblock %}

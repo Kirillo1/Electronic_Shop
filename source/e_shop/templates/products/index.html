@@ -22,17 +22,17 @@
             </div>
             <br>
 
-{#            {% if perms.shop.add_product %}#}
-{##}
-{#                <div class="btn-group" role="group" aria-label="Basic mixed styles example">#}
-{#                    <button type="button" class="btn btn-warning"><a class="dropdown-item"#}
-{#                                                                     href="{% url "product:product_update" product.pk %}">Изменить</a>#}
-{#                    </button>#}
-{#                    <button type="button" class="btn btn-danger"><a class="dropdown-item"#}
-{#                                                                    href="{% url "product:product_delete" product.pk %}">Удалить</a>#}
-{#                    </button>#}
-{#                </div><br>#}
-{#            {% endif %}#}
+            {% if perms.shop.add_product %}
+
+                <div class="btn-group" role="group" aria-label="Basic mixed styles example">
+                    <button type="button" class="btn btn-warning"><a class="dropdown-item"
+                                                                     href="{% url "products:product_update" product.pk %}">Изменить</a>
+                    </button>
+                    <button type="button" class="btn btn-danger"><a class="dropdown-item"
+                                                                    href="{% url "products:product_delete" product.pk %}">Удалить</a>
+                    </button>
+                </div><br>
+            {% endif %}
 {#            {% include 'partial/cart_add_form.html' %}<br>#}
 
 

@@ -1,5 +1,8 @@
-from django.views.generic import DetailView
+from django.contrib.auth.mixins import PermissionRequiredMixin
+from django.urls import reverse, reverse_lazy
+from django.views.generic import DetailView, CreateView, UpdateView, DeleteView
 
+from e_shop.forms import ProductForm
 from e_shop.models import Product
 from source.e_shop.views.base import SearchView
 
@@ -29,3 +32,31 @@ class ProductDetailView(DetailView):
 
     def get_queryset(self):
         return super().get_queryset().filter(remainder__gt=0)
+
+
+class ProductCreateView(PermissionRequiredMixin, CreateView):
+    permission_required = "shop.add_product"
+    model = Product
+    form_class = ProductForm
+    template_name = "products/create.html"
+
+    def get_success_url(self):
+        return reverse('products:product_view', kwargs={'pk': self.object.pk})
+
+
+class ProductUpdateView(PermissionRequiredMixin, UpdateView):
+    permission_required = "shop.change_product"
+    form_class = ProductForm
+    template_name = "products/update.html"
+    model = Product
+
+    def get_success_url(self):
+        return reverse('products:product_view', kwargs={'pk': self.object.pk})
+
+
+class ProductDeleteView(PermissionRequiredMixin, DeleteView):
+    permission_required = "shop.delete_product"
+    template_name = "products/delete.html"
+    model = Product
+    success_url = reverse_lazy('products:index')
+

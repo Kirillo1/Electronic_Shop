@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block lists %}Изменение товара{% endblock %}
+{% block nav %}
+    <li class="nav-item">
+        <a class="nav-link active" aria-current="page" href="{% url 'products:product_view' product.pk %}">Назад</a>
+    </li>{% endblock %}
+{% block content %}<br/>
+    <h1>Изменить товар</h1>
+
+    <form method="post">
+        {% include "partial/form.html" with button_text="Сохранить" %}
+    </form>
+{% endblock %}
+
