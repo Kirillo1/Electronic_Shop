@@ -2,6 +2,7 @@ from django.urls import path
 
 from e_shop.views.carts import (CartListView, CartDeleteView,
                                 CartAddView, CartOneDelete)
+from e_shop.views.orders import OrderCreateView
 from e_shop.views.products import (IndexView, ProductDetailView,
                                    ProductCreateView, ProductUpdateView,
                                    ProductDeleteView)
@@ -18,4 +19,5 @@ urlpatterns = [
     path('cart/<int:pk>/delete', CartDeleteView.as_view(), name="cart_delete"),
     path('cart/<int:pk>/products/add/', CartAddView.as_view(), name="cart_add"),
     path('cart/<int:pk>/delete', CartOneDelete.as_view(), name="cart_one_delete"),
+    path('order/create', OrderCreateView.as_view(), name="order_create_view"),
 ]

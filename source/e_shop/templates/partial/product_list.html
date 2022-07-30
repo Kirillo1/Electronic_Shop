@@ -1,0 +1,9 @@
+{% if item_in_cart %}
+    <h1>Ваш заказ:</h1>
+{% else %}
+    <h1>У вас нет заказов</h1>
+{% endif %}
+
+{% for pro in item_in_cart %}
+    <h3>{{ pro }}</h3>
+{% endfor %}

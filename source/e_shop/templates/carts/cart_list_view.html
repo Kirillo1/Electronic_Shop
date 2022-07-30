@@ -32,10 +32,10 @@
 <h3>Общая сумма:</h3>
 <h2>{{ total }}</h2><br/>
 
-{#    <form action="{% url 'products:order_create_view' %}" method="POST">#}
-{#        <h2>Заказ</h2>#}
-{#        {% include "partial/form.html" with button_text="Заказать" %}#}
-{#    </form>#}
+    <form action="{% url 'products:order_create_view' %}" method="POST">
+        <h2>Заказ</h2>
+        {% include "partial/form.html" with button_text="Заказать" %}
+    </form>
 <br/><br/></div>
 
 
