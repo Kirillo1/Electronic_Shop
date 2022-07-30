@@ -34,19 +34,46 @@ class Product(models.Model):
 class ItemInCart(models.Model):
     product = models.ForeignKey("e_shop.Product", on_delete=models.CASCADE,
                                 related_name="in_cart", verbose_name="Продукт")
-    quantity = models.PositiveIntegerField(verbose_name="колличество", default=1)
+    quantity = models.PositiveIntegerField(verbose_name="Колличество", default=1)
 
     def get_product_total(self):
         return self.quantity * self.product.price
 
     class Meta:
-        verbose_name = 'корзина'
-        verbose_name_plural = 'корзины'
+        verbose_name = 'Корзина'
+        verbose_name_plural = 'Корзины'
 
     @classmethod
-    def get_total(cls): 
+    def get_total(cls):
         total = 0
         for cart in cls.objects.all():
             total += cart.get_product_total()
         return total
 
+
+class Order(models.Model):
+    user_name = models.ForeignKey(User, related_name="orders", verbose_name="Имя", on_delete=models.CASCADE)
+    phone = models.CharField(max_length=100, verbose_name="Телефон", null=False, blank=False)
+    address = models.CharField(max_length=100, verbose_name="Адрес", null=False, blank=False)
+    date_of_creation = models.DateTimeField(verbose_name='Дата создания', auto_now_add=True)
+    products = models.ManyToManyField("e_shop.Product", related_name="orders", verbose_name="Продукты",
+                                      through='e_shop.OrderProduct', through_fields=['order', 'product'])
+
+    class Meta:
+        verbose_name = 'Заказ'
+        verbose_name_plural = 'Заказы'
+
+
+class OrderProduct(models.Model):
+    product = models.ForeignKey('e_shop.Product', on_delete=models.CASCADE,
+                                verbose_name='Продукт', related_name='order_product')
+    order = models.ForeignKey('e_shop.Order', on_delete=models.CASCADE,
+                              verbose_name='Заказ', related_name='order_product')
+    quantity = models.PositiveIntegerField(verbose_name='Колличество')
+
+    def __str__(self):
+        return f'{self.product} - {self.quantity}'
+
+    class Meta:
+        verbose_name = 'Продукт в корзине'
+        verbose_name_plural = 'Продукты в корзине'
