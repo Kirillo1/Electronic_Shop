@@ -25,33 +25,33 @@
                 <li class="nav-item">
                     <a class="nav-link active" aria-current="page" href={% url 'products:cart_view' %}>Корзина</a>
                 </li>
-{#                {% if user.is_authenticated %}#}
-{#                    {% if perms.shop.change_product %}#}
+                {% if user.is_authenticated %}
+                    {% if perms.shop.change_product %}
                         <li class="nav-item">
                             <a class="nav-link" href="{% url 'products:product_add' %}">Добавить
                                 товар</a>
                         </li>
-{#                    {% endif %}#}
+                    {% endif %}
 
 {#                    <li class="nav-item">#}
 {#                        <a class="nav-link"#}
 {#                           href="{% url "accounts:user_profile" user.id %}">Hello, {{ user.first_name }} {{ user.last_name }}!</a>#}
 {#                    </li>#}
-{#                    <li class="nav-item">#}
-{#                        <a class="nav-link"#}
-{#                           href="{% url "accounts:logout" %}">Выход</a>#}
-{#                    </li>#}
-{#                {% else %}#}
+                    <li class="nav-item">
+                        <a class="nav-link"
+                           href="{% url "accounts:logout" %}">Выход</a>
+                    </li>
+                {% else %}
 
-{#                    <li class="nav-item">#}
-{#                        <a class="nav-link"#}
-{#                           href="{% url "accounts:login" %}?next={{ request.get_full_path }}">Вход</a>#}
-{#                    </li>#}
-{#                    <li class="nav-item">#}
-{#                        <a class="nav-link"#}
-{#                           href="{% url "accounts:registration" %}">Регистрация</a>#}
-{#                    </li>#}
-{#                {% endif %}#}
+                    <li class="nav-item">
+                        <a class="nav-link"
+                           href="{% url "accounts:login" %}?next={{ request.get_full_path }}">Вход</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link"
+                           href="{% url "accounts:registration" %}">Регистрация</a>
+                    </li>
+                {% endif %}
 
             </ul>
             <form class="d-flex" role="search" method="GET">

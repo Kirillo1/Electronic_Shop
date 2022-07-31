@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+{% block title %}Вход{% endblock %}
+{% block content %}
+    <h1>Регистрация</h1>
+    <form method="POST">
+        {% include "partial/form.html" with button_text="Регистрация" %}<br/>
+    </form>
+
+{% endblock %}
