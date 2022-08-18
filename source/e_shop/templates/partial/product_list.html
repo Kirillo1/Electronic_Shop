@@ -1,9 +1,12 @@
 {% if item_in_cart %}
-    <h1>Ваш заказ:</h1>
+    <h2>Ваш заказ:</h2>
 {% else %}
-    <h1>У вас нет заказов</h1>
+    <h2>У вас нет заказов</h2>
 {% endif %}
 
 {% for pro in item_in_cart %}
-    <h3>{{ pro }}</h3>
+    <p>Название: {{ pro.product.name }}</p>
+    <p>Количество: {{ pro.quantity }}</p>
+    <p>{{ pro.product.price }}</p>
+
 {% endfor %}

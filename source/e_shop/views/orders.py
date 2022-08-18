@@ -20,10 +20,10 @@ class OrderCreateView(CreateView):
         order_products = []
         for item in cart_products:
             product = item.product
-            amount = item.amount
-            product.remainder -= amount
+            quantity = item.quantity
+            product.remainder -= quantity
             products.append(product)
-            order_product = OrderProduct(product=product, amount=amount, order=order)
+            order_product = OrderProduct(product=product, quantity=quantity, order=order)
             order_products.append(order_product)
 
         OrderProduct.objects.bulk_create(order_products)

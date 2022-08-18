@@ -1,7 +1,7 @@
 from django.db.models import Q
 from django.views.generic import ListView
 
-from source.e_shop.forms import SearchForm
+from e_shop.forms import SearchForm
 
 
 class SearchView(ListView):

@@ -1,0 +1,59 @@
+[
+{
+  "model": "e_shop.product",
+  "pk": 1,
+  "fields": {
+    "name": "Acer",
+    "description": "Отличный монитор для дома и для офиса",
+    "category": "monitors",
+    "remainder": 10,
+    "price": "56000.00"
+  }
+},
+{
+  "model": "e_shop.product",
+  "pk": 2,
+  "fields": {
+    "name": "Bloody",
+    "description": "Игровая клавиатура с яркой подсветкой.",
+    "category": "keyboards",
+    "remainder": 2,
+    "price": "56000.00"
+  }
+},
+{
+  "model": "e_shop.itemincart",
+  "pk": 8,
+  "fields": {
+    "product": 1,
+    "quantity": 2
+  }
+},
+{
+  "model": "e_shop.itemincart",
+  "pk": 9,
+  "fields": {
+    "product": 2,
+    "quantity": 1
+  }
+},
+{
+  "model": "e_shop.order",
+  "pk": 1,
+  "fields": {
+    "user_name": 1,
+    "phone": "+5522464555",
+    "address": "46, 17a, Sakebaeva st",
+    "date_of_creation": "2022-07-30T18:37:59.027Z"
+  }
+},
+{
+  "model": "e_shop.orderproduct",
+  "pk": 1,
+  "fields": {
+    "product": 1,
+    "order": 1,
+    "quantity": 2
+  }
+}
+]
